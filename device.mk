@@ -116,11 +116,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
-# Compatibility
-PRODUCT_PACKAGES += \
-    libshim_cutils \
-    libshim_signinfolistener
-
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
@@ -291,6 +286,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/_hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/_hals.conf
+
+# Shim
+PRODUCT_PACKAGES += \
+    libshims_vendor
 
 # Thermal
 PRODUCT_COPY_FILES += \

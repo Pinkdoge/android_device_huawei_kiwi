@@ -92,31 +92,31 @@ on post-fs-data
     chown system system /sys/class/graphics/fb0/lcd_comform_mode
     chown system system /sys/class/graphics/fb0/lcd_support_mode
 
-service oeminfo_nvm /system/vendor/bin/oeminfo_nvm_server
+service oeminfo_nvm /vendor/bin/oeminfo_nvm_server
     class core
     user root
 
-service rmt_oeminfo /system/vendor/bin/rmt_oeminfo
+service rmt_oeminfo /vendor/bin/rmt_oeminfo
     class core
     user root
 
-service teecd /system/vendor/bin/teecd
+service teecd /vendor/bin/teecd
     class core
     user system
     group system
 
-service signinfolistener /system/vendor/bin/signinfolistener
+service signinfolistener /vendor/bin/signinfolistener
     class core
     user system
     group system readproc
 
-service libqmi_oem_main /system/vendor/bin/libqmi_oem_main
+service libqmi_oem_main /vendor/bin/libqmi_oem_main
     class main
     group wakelock
 
 # disable enable_swap
 
-service huawei_version /system/vendor/bin/huawei_version
+service huawei_version /vendor/bin/huawei_version
     class core
     user root
     oneshot

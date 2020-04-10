@@ -40,7 +40,7 @@ on early-init
     write /sys/bus/msm_subsys/devices/subsys2/restart_level related
 
 on init
-    export LD_PRELOAD libshim_cutils.so
+    export LD_PRELOAD /vendor/lib/libshims_vendor.so
 
 on post-fs
     # Allow writing to the kernel trace log.

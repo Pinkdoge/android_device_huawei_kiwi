@@ -169,11 +169,6 @@ include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += \
     device/huawei/kiwi/sepolicy
 
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /vendor/bin/signinfolistener|libshim_signinfolistener.so:\
-    /vendor/lib/libmmcamera_hdr_gb_lib.so|/vendor/lib/libmmqjpeg_codec.so
-
 # Treble
 PRODUCT_SHIPPING_API_LEVEL := 18
 PRODUCT_FULL_TREBLE_OVERRIDE := true
