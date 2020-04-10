@@ -35,12 +35,14 @@
 #include <fcntl.h>
 #include <poll.h>
 #include <linux/media.h>
+
 #include <signal.h>
 #include <cutils/properties.h>
 #include <stdlib.h>
-#include <media/msm_cam_sensor.h>
 #include <cutils/properties.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <media/msm_cam_sensor.h>
 
 #include "mm_camera_dbg.h"
 #include "mm_camera_interface.h"

@@ -18,7 +18,8 @@ LOCAL_SHARED_LIBRARIES := \
     libdl \
     liblog \
     libutils \
+    libhardware
 
 LOCAL_STRIP_MODULE := false
-
+LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)

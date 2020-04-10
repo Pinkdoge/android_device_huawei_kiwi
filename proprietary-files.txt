@@ -519,7 +519,7 @@ vendor/lib/libsmemlog.so
 
 # Radio
 global/ons/ons.bin
--app/qcrilmsgtunnel/qcrilmsgtunnel.apk:vendor/app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/imsqmidaemon:vendor/bin/imsqmidaemon
 bin/netmgrd:vendor/bin/netmgrd|339e2d8f8af401d993341a5a2bab34e70807cda4
 bin/qmuxd:vendor/bin/qmuxd|004ed171a192bad685bac2ef4004d419764efc59

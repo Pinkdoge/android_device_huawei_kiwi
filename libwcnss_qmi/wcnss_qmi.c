@@ -18,7 +18,7 @@
 #define LOG_TAG "libwcnss_qmi"
 //#define LOG_NDEBUG 0
 
-#include <cutils/log.h>
+#include <log/log.h>
 #include <string.h>
 
 /* liboeminfo_oem_api.so */

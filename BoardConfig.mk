@@ -75,8 +75,8 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_NEEDS_LEGACY_CAMERA_HAL1_DYN_NATIVE_HANDLE := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-	/system/bin/mediaserver=23 \
-	/system/vendor/bin/mm-qcamera-daemon=23
+	/vendor/bin/mediaserver=23 \
+	/vendor/bin/mm-qcamera-daemon=23
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -122,8 +122,12 @@ BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 11618204672
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 11434703872
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
+BOARD_VENDORIMAGE_PARTITION_SIZE := 183500800
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_USES_VENDORIMAGE := true
+TARGET_COPY_OUT_VENDOR := vendor
 BOARD_PERSISTIMAGE_PARTITION_SIZE := 67108864
 BOARD_FLASH_BLOCK_SIZE := 131072 # blockdev --getbsz /dev/block/mmcblk0p19
 
@@ -134,7 +138,8 @@ TARGET_USES_INTERACTION_BOOST := true
 TARGET_TAP_TO_WAKE_NODE := /sys/touch_screen/tap_to_wake
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Qualcomm support
 BOARD_USES_QC_TIME_SERVICES := true
@@ -166,8 +171,17 @@ BOARD_SEPOLICY_DIRS += \
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/vendor/bin/signinfolistener|libshim_signinfolistener.so:\
-    /system/vendor/lib/libmmcamera_hdr_gb_lib.so|/system/vendor/lib/libmmqjpeg_codec.so
+    /vendor/bin/signinfolistener|libshim_signinfolistener.so:\
+    /vendor/lib/libmmcamera_hdr_gb_lib.so|/vendor/lib/libmmqjpeg_codec.so
+
+# Treble
+PRODUCT_SHIPPING_API_LEVEL := 18
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
+
+# VNDK
+BOARD_VNDK_VERSION := current
+BOARD_VNDK_RUNTIME_DISABLE := true
 
 # Vendor Init
 TARGET_INIT_VENDOR_LIB := libinit_kiwi

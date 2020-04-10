@@ -222,7 +222,7 @@ on property:bluetooth.startbtsnoop=true
 on property:bluetooth.startbtsnoop=false
     stop btsnoop
 
-service qcom-c_main-sh /system/vendor/bin/init.class_main.sh
+service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
     user root
     oneshot
@@ -234,24 +234,28 @@ on property:vold.decrypt=trigger_restart_framework
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service irsc_util /system/vendor/bin/irsc_util "/system/vendor/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/vendor/bin/rmt_storage
+service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
     seclabel u:r:rmt_storage:s0
     shutdown critical
 
-service hciattach /system/vendor/bin/init.qcom.bt.sh
+service hciattach /vendor/bin/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin system
     disabled
     seclabel u:r:bluetooth_loader:s0
+    oneshot
+
+service acdblink /vendor/bin/init.acdb.sh
+    disabled
     oneshot
 
 on property:vendor.bluetooth.hciattach=true
@@ -264,7 +268,7 @@ on property:vendor.hw.fm.init=0
 on property:vendor.hw.fm.init=1
     write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
 
-service btsnoop /system/bin/btsnoop
+service btsnoop /vendor/bin/btsnoop
    user bluetooth
    group bluetooth net_bt_admin sdcard_rw sdcard_r
    class late_start
@@ -272,18 +276,18 @@ service btsnoop /system/bin/btsnoop
    oneshot
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/vendor/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps oem_2950 wakelock
     disabled
 
-service netmgrd /system/vendor/bin/netmgrd
+service netmgrd /vendor/bin/netmgrd
     class main
     group wakelock
     disabled
 
-service qti /system/vendor/bin/qti
+service qti /vendor/bin/qti
     class main
     disabled
 
@@ -307,8 +311,8 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     oneshot
 
 on property:crypto.driver.load=1
-    insmod /system/lib/modules/qce.ko
-    insmod /system/lib/modules/qcedev.ko
+    insmod /vendor/lib/modules/qce.ko
+    insmod /vendor/lib/modules/qcedev.ko
 
 service ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
@@ -346,13 +350,13 @@ on property:sys.qbcharger.enable=true
 on property:sys.qbcharger.enable=false
     stop qbcharger
 
-service vm_bms /system/vendor/bin/vm_bms
+service vm_bms /vendor/bin/vm_bms
     class main
     user root
     group root wakelock
 
 # set primary sd directory
-service preparesdservice /system/bin/vdc volume storagetosd
+service preparesdservice /vendor/bin/vdc volume storagetosd
    class main
    disabled
    oneshot
